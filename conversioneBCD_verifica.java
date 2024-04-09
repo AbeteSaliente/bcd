@@ -1,5 +1,7 @@
 package it.edu.iisgubbio.github;
 
+import java.util.Hashtable;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -28,6 +30,32 @@ public class conversioneBCD_verifica extends Application {
 		griglia.setPadding(new Insets(10, 10, 10, 10));
 		griglia.setHgap(10);
 		griglia.setVgap(10);
+		
+		pConv.setOnAction(e->Converti());
+	}
+	
+	public void Converti() {
+		String vett[] = tNum.getText().split("");
+		String num = "";
+		
+		Hashtable <String,String> convBCD =  new Hashtable <String,String>();
+		
+		convBCD.put("0", "0000");
+		convBCD.put("1", "0001");
+		convBCD.put("2", "0010");
+		convBCD.put("3", "0011");
+		convBCD.put("4", "0100");
+		convBCD.put("5", "0101");
+		convBCD.put("6", "0110");
+		convBCD.put("7", "0111");
+		convBCD.put("8", "1000");
+		convBCD.put("9", "1001");
+		
+		for(int i = 0; i < vett.length; i++) {
+			num += convBCD.get(vett[i]);
+		}
+		
+		lRisu.setText(num);
 	}
 	
 	public static void main(String[] args) {
